@@ -1,26 +1,21 @@
 package com.example.Assignment.Model;
 
-import org.jetbrains.annotations.NotNull;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "TWVehicleRequest")
-public class Vehicle {
-
+@Document(collection = "FWVehicleRequest")
+public class FWVehicle {
     private String requestId;
     private String vertical;
     private String model;
     private String make;
 
-
-    public Vehicle(String requestId, String vertical, String model, String make) {
-        this.requestId = requestId;
-        this.vertical = vertical;
-        this.model = model;
-        this.make = make;
+    public String getRequestId() {
+        return requestId;
     }
 
-
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
+    }
 
     public String getVertical() {
         return vertical;
@@ -46,11 +41,10 @@ public class Vehicle {
         this.make = make;
     }
 
-    public String getRequestId() {
-        return requestId;
-    }
-
-    public void setRequestId(String requestId) {
+    public FWVehicle(String requestId, String vertical, String model, String make) {
         this.requestId = requestId;
+        this.vertical = vertical;
+        this.model = model;
+        this.make = make;
     }
 }
