@@ -21,7 +21,7 @@ public class VehicleRequestService {
         String createRequestId = "";
         //while (true) {
             createRequestId = createRequestId(fwVehicle.getVertical());
-//            if (vehicleRequestController.getVehicleData(createRequestId,fwVehicle.getVertical()).isEmpty()) {
+//            if (vehicleRequestController.getVehicleData(createRequestId).isEmpty()) {
 //                break;
 //            }
         //}
@@ -64,8 +64,6 @@ public class VehicleRequestService {
 
 
     public List<FWVehicle> getAllFWVehicalRequest() {
-        //List<FWVehicle> vehicleList= fwVehicleRequestRepository.findAll();
-       //List <Vehicle> vehicles = vehicleList;
         return  fwVehicleRequestRepository.findAll();
     }
 
@@ -77,7 +75,7 @@ public class VehicleRequestService {
         return vehicleRepository.findByRequestId(requestId);
     }
 
-    public FWVehicle getFWVehicalDetailsByRequestId(String requestId) {
+    public  FWVehicle getFWVehicalDetailsByRequestId(String requestId) {
         return  fwVehicleRequestRepository.findByRequestId(requestId);
     }
 

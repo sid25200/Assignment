@@ -17,8 +17,6 @@ public class VehicleRequestController {
     @Autowired
     private VehicleRequestService vehicleRequestService;
 
-    public VehicleRequestController() {
-    }
 
     @PostMapping("/api/vehicle/add/")
     public String addNewVehicleRequest(@RequestBody FWVehicle fwVehicle) {
