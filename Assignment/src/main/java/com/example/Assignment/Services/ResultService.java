@@ -20,7 +20,7 @@ public class ResultService {
         InsurerPremiumList insurerPremiumList =  insurerPremiumListService.getInsurerPremiumList(requestId);
         if(fwVehicle == null || insurerPremiumList == null )
             return null;
-        fwResultSupportService.storeAllFWResults(fwVehicle,insurerPremiumList);
+        fwResultSupportService.storeAllFWResults(fwVehicle,insurerPremiumList,requestId);
         return new Result(fwVehicle,insurerPremiumList);
     }
 }

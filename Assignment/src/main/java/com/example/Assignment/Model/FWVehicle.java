@@ -4,10 +4,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "FWVehicleRequest")
 public class FWVehicle {
-    private String requestId;
-    private String vertical;
-    private String model;
-    private String make;
+    public String requestId;
+    public String vertical;
+    public String model;
+    public String make;
 
     public String getRequestId() {
         return requestId;
