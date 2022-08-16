@@ -29,4 +29,8 @@ public class FWResultSupportService {
 
         fwResultsRepository.insert(fwResultList);
     }
+
+    public List<FWResult> findByOnlyRequestId(String requestId) {
+        return fwResultsRepository.findByRequestId(requestId);
+    }
 }

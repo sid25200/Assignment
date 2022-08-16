@@ -13,13 +13,13 @@ public class InsurerPremiumListService {
     @Autowired
     private InsurerPremiumListRepository insurerPremiumListRepository;
     public String addInsurerPremiumList(InsurerPremiumList insurerPremiumList) {
-        if(insurerPremiumList.getRequestId().isEmpty())
-            return "Missing Data";
+        //if(insurerPremiumList.getRequestId().isEmpty())
+        //    return "Missing Data";
         insurerPremiumListRepository.insert(insurerPremiumList);
-        return "Added Insurer Premium Data "+ insurerPremiumList.getRequestId();//+" "+insurerPremiumList.getInsurerPremiumList();
+        return "Added Insurer Premium Data "+ insurerPremiumList;//+" "+insurerPremiumList.getInsurerPremiumList();
     }
 
-    public InsurerPremiumList getInsurerPremiumList(String requestId) {
-        return insurerPremiumListRepository.findByRequestId(requestId);
+    public InsurerPremiumList getInsurerPremiumList(String make, String model) {
+        return insurerPremiumListRepository.findByMakeAndModel(make,model);
     }
 }

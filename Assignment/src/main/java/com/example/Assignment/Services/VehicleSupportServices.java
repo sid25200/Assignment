@@ -31,7 +31,7 @@ public class VehicleSupportServices {
     }
 
     public boolean validateVehicleData(Vehicle vehicle) {
-        if (vehicle.getRequestId() == null || vehicle.getMake() == null || vehicle.getVertical() == null || vehicle.getModel() == null) {
+        if ( vehicle.getMake() == null || vehicle.getVertical() == null || vehicle.getModel() == null) {
             return false;
         }
         return true;

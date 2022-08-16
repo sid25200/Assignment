@@ -22,10 +22,10 @@ public class InsurerPremiumListController {
         return insurerPremiumListService.addInsurerPremiumList(insurerPremiumList);
     }
 
-    @GetMapping("/api/insurerPremium/get/{requestId}")
-    public InsurerPremiumList getInsurerPremiumByRequestId(@PathVariable String requestId){
-        return insurerPremiumListService.getInsurerPremiumList(requestId);
-    }
+//    @GetMapping("/api/insurerPremium/get/{requestId}")
+//    public InsurerPremiumList getInsurerPremiumByRequestId(@PathVariable String requestId){
+//        return insurerPremiumListService.getInsurerPremiumList(requestId);
+//    }
 
 
 }

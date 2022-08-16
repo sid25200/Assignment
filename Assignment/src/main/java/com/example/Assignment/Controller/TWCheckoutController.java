@@ -2,32 +2,29 @@ package com.example.Assignment.Controller;
 
 import com.example.Assignment.Model.Customer;
 import com.example.Assignment.Model.FWCheckout;
-import com.example.Assignment.Services.FWCheckoutService;
+import com.example.Assignment.Services.TWCheckoutService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
-
 @RestController
-public class FWCheckoutController {
+public class TWCheckoutController {
     @Autowired
-    private FWCheckoutService fwCheckoutService;
+    private TWCheckoutService twCheckoutService;
 
 
-    @PostMapping("/api/vehicle/FW/checkout/{requestId}/{insurer}")
+    @PostMapping("/api/vehicle/TW/checkout/{requestId}/{insurer}")
     public FWCheckout storeCheckoutDetails(@PathVariable String requestId, @PathVariable String insurer, @RequestBody Customer customer) {
-        return fwCheckoutService.getCheckoutDetailsByRequestIdAndInsurer(requestId, insurer,customer);
+        return twCheckoutService.getCheckoutDetailsByRequestIdAndInsurer(requestId, insurer,customer);
     }
-    @PostMapping("/api/vehicle/FW/checkout/{requestId}/insurer/{resultId}")
+    @PostMapping("/api/vehicle/TW/checkout/{requestId}/insurer/{resultId}")
     public FWCheckout storeCheckoutDetailsByResultId(@PathVariable String requestId, @PathVariable String resultId, @RequestBody Customer customer) {
-        return fwCheckoutService.getCheckoutDetailsByRequestIdAndResultId(requestId, resultId,customer);
+        return twCheckoutService.getCheckoutDetailsByRequestIdAndResultId(requestId, resultId,customer);
     }
-    @GetMapping("/api/vehicle/FW/checkout/{requestId}")
+    @GetMapping("/api/vehicle/TW/checkout/{requestId}")
     public FWCheckout getAllCheckoutDetails(@PathVariable String requestId) {
-        return fwCheckoutService.getCheckoutDetailsByRequestId(requestId);
+        return twCheckoutService.getCheckoutDetailsByRequestId(requestId);
     }
-    @PutMapping("/api/vehicle/FW/checkout/{requestId}/{checkoutId}")
+    @PutMapping("/api/vehicle/TW/checkout/{requestId}/{checkoutId}")
     public String updateFWCheckoutDetails(@PathVariable String requestId, @PathVariable String checkoutId,@RequestBody Customer customer) {
-        return fwCheckoutService.updateCheckoutDetails(requestId,checkoutId,customer);
+        return twCheckoutService.updateCheckoutDetails(requestId,checkoutId,customer);
     }
 }

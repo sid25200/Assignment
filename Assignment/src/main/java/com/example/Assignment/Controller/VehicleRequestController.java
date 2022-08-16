@@ -17,7 +17,7 @@ public class VehicleRequestController {
     @Autowired
     private VehicleRequestService vehicleRequestService;
 
-
+    //save vehicle details and create 4 results
     @PostMapping("/api/vehicle/add/")
     public String addNewVehicleRequest(@RequestBody FWVehicle fwVehicle) {
             return vehicleRequestService.newVehicleRequest(fwVehicle);

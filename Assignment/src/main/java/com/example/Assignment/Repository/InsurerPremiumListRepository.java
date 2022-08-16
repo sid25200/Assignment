@@ -8,5 +8,9 @@ import java.util.Optional;
 
 @Repository
 public interface InsurerPremiumListRepository extends MongoRepository<InsurerPremiumList,String> {
-    InsurerPremiumList findByRequestId(String requestId);
+    //InsurerPremiumList findByRequestId(String requestId);
+
+    //InsurerPremiumList findByVerticalAndMakeAndModel(String vertical, String make, String model);
+
+    InsurerPremiumList findByMakeAndModel(String make, String model);
 }
