@@ -9,11 +9,11 @@ public class TWResult {
     private String resultId;
     private String requestId;
     private String insurerName;
-    private Vehicle Vehicle;
+    private Vehicle vehicle;
     private InsurerPremium insurerPremium;
 
-    public TWResult(com.example.Assignment.Model.Vehicle vehicle, InsurerPremium insurerPremium) {
-        Vehicle = vehicle;
+    public TWResult(Vehicle vehicle, InsurerPremium insurerPremium) {
+        this.vehicle = vehicle;
         this.insurerPremium = insurerPremium;
     }
 
@@ -41,12 +41,12 @@ public class TWResult {
         this.insurerName = insurerName;
     }
 
-    public com.example.Assignment.Model.Vehicle getVehicle() {
-        return Vehicle;
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 
-    public void setVehicle(com.example.Assignment.Model.Vehicle vehicle) {
-        Vehicle = vehicle;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
     public InsurerPremium getInsurerPremium() {

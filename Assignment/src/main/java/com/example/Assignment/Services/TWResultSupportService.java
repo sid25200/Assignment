@@ -26,6 +26,6 @@ public class TWResultSupportService {
     }
 
     public List<TWResult> findByOnlyRequestId(String requestId) {
-        return twResultRepository.findByRequestId(requestId);
+        return twResultRepository.findBy(requestId);
     }
 }

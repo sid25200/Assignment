@@ -5,7 +5,7 @@ import com.example.Assignment.Model.TWCheckout;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface TWCheckoutRepository extends MongoRepository<TWCheckout, String> {
-    FWCheckout findByRequestId(String requestId);
+    TWCheckout findByRequestId(String requestId);
 
     TWCheckout findByCheckoutId(String checkoutId);
 }

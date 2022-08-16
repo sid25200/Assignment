@@ -1,7 +1,9 @@
 package com.example.Assignment.Model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "TWCheckout")
 public class TWCheckout {
     @Id
     private String checkoutId;
