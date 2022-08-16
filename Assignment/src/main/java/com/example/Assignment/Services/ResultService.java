@@ -1,8 +1,6 @@
 package com.example.Assignment.Services;
 
-import com.example.Assignment.Model.FWVehicle;
-import com.example.Assignment.Model.InsurerPremiumList;
-import com.example.Assignment.Model.Result;
+import com.example.Assignment.Model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +13,8 @@ public class ResultService {
     private InsurerPremiumListService insurerPremiumListService;
     @Autowired
     private FWResultSupportService fwResultSupportService;
+    @Autowired
+    private TWResultSupportService twResultSupportService;
     public Result getAllFWInsurerResultByRequestId(String requestId) {
         FWVehicle fwVehicle = vehicleRequestService.getFWVehicalDetailsByRequestId(requestId);
         InsurerPremiumList insurerPremiumList =  insurerPremiumListService.getInsurerPremiumList(requestId);
@@ -22,5 +22,14 @@ public class ResultService {
             return null;
         fwResultSupportService.storeAllFWResults(fwVehicle,insurerPremiumList,requestId);
         return new Result(fwVehicle,insurerPremiumList);
+    }
+
+    public TwoWheeler getAllTWInsurerResultByRequestId(String requestId) {
+        Vehicle vehicle = vehicleRequestService.getTWVehicalDetailsByRequestId(requestId);
+        InsurerPremiumList insurerPremiumList =  insurerPremiumListService.getInsurerPremiumList(requestId);
+        if(vehicle == null || insurerPremiumList == null )
+            return null;
+        twResultSupportService.storeAllTWResults(vehicle,insurerPremiumList,requestId);
+        return new TwoWheeler(vehicle,insurerPremiumList);
     }
 }

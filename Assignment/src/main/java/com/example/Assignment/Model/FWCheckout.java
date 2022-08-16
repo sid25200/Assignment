@@ -60,5 +60,11 @@ public class FWCheckout {
         this.insurerPremium = insurerPremium;
     }
 
+    public String getRequestId() {
+        return requestId;
+    }
 
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
+    }
 }

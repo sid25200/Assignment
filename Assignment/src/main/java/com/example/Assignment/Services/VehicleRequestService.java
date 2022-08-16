@@ -17,17 +17,21 @@ public class VehicleRequestService {
     private FWVehicleRequestRepository fwVehicleRequestRepository;
     @Autowired
     private VehicleRepository vehicleRepository;
+    @Autowired
+    private VehicleSupportServices vehicleSupportServices;
     public String newVehicleRequest(FWVehicle fwVehicle){
         String createRequestId = "";
-        //while (true) {
+        while (true) {
             createRequestId = createRequestId(fwVehicle.getVertical());
-//            if (vehicleRequestController.getVehicleData(createRequestId).isEmpty()) {
-//                break;
-//            }
-        //}
+            if (getTWVehicalDetailsByRequestId(createRequestId)==null) {
+                break;
+            }
+        }
         fwVehicle.setRequestId(createRequestId);
-        if(fwVehicle.getVertical().equalsIgnoreCase("FW"))
+        if(fwVehicle.getVertical().equalsIgnoreCase("FW")) {
+            if(vehicleSupportServices.validateInput(fwVehicle)) return "Not Proper Input";
             fwVehicleRequestRepository.insert(fwVehicle);
+        }
         else if (fwVehicle.getVertical().equalsIgnoreCase("TW")) {
             Vehicle vehicle = new Vehicle(fwVehicle.getRequestId(), fwVehicle.getVertical(), fwVehicle.getModel(), fwVehicle.getMake());
             vehicleRepository.insert(vehicle);
@@ -63,6 +67,7 @@ public class VehicleRequestService {
 
 
 
+
     public List<FWVehicle> getAllFWVehicalRequest() {
         return  fwVehicleRequestRepository.findAll();
     }
@@ -78,6 +83,5 @@ public class VehicleRequestService {
     public  FWVehicle getFWVehicalDetailsByRequestId(String requestId) {
         return  fwVehicleRequestRepository.findByRequestId(requestId);
     }
-
 
 }

@@ -17,7 +17,7 @@ public class InsurerPremiumListController {
     @Autowired
     private InsurerPremiumListService insurerPremiumListService;
 
-    @PostMapping("/api/insurerPremium/add")
+    @PostMapping("/api/insurerPremium/add/")
     public String addInsurerPremium(@RequestBody InsurerPremiumList insurerPremiumList){
         return insurerPremiumListService.addInsurerPremiumList(insurerPremiumList);
     }

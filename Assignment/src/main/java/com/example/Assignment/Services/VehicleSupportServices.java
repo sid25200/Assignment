@@ -1,5 +1,6 @@
 package com.example.Assignment.Services;
 
+import com.example.Assignment.Model.FWVehicle;
 import com.example.Assignment.Model.Vehicle;
 import org.springframework.stereotype.Service;
 
@@ -34,5 +35,9 @@ public class VehicleSupportServices {
             return false;
         }
         return true;
+    }
+
+    public boolean validateInput(FWVehicle fwVehicle) {
+        return (fwVehicle.getVertical() == null || fwVehicle.getMake() == null || fwVehicle.getModel() == null);
     }
 }

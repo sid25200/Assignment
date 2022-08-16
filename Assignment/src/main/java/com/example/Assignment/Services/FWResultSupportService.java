@@ -1,9 +1,7 @@
 package com.example.Assignment.Services;
 
+import com.example.Assignment.Model.*;
 import com.example.Assignment.Model.FWResult;
-import com.example.Assignment.Model.FWVehicle;
-import com.example.Assignment.Model.InsurerPremium;
-import com.example.Assignment.Model.InsurerPremiumList;
 import com.example.Assignment.Repository.FWResultsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

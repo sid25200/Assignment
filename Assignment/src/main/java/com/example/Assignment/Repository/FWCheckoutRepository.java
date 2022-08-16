@@ -9,4 +9,7 @@ import org.springframework.stereotype.Repository;
 //@EnableMongoRepositories
 public interface FWCheckoutRepository extends MongoRepository<FWCheckout,String> {
 
+    FWCheckout findByRequestId(String requestId);
+
+    FWCheckout findByCheckoutId(String checkoutId);
 }
