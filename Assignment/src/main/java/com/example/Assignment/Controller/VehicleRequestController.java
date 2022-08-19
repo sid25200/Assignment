@@ -23,21 +23,32 @@ public class VehicleRequestController {
             return vehicleRequestService.newVehicleRequest(fwVehicle);
     }
 
-    @GetMapping("/api/vehicle/TW")
-    public List<Vehicle> getAllTWVehicalData() {
-            return vehicleRequestService.getAllTWVehicalRequest();
+    @GetMapping("/api/vehicle/{vertical}")
+    public List<Vehicle> getAllVehicalData(@PathVariable String vertical) {
+            return vehicleRequestService.getAllVehicalRequest(vertical);
     }
-    @GetMapping("/api/vehicle/FW")
-    public List<FWVehicle> getAllFWVehicleData() {
-        return vehicleRequestService.getAllFWVehicalRequest();
+
+//    @GetMapping("/api/vehicle/TW")
+//    public List<Vehicle> getAllTWVehicalData() {
+//            return vehicleRequestService.getAllTWVehicalRequest();
+//    }
+//    @GetMapping("/api/vehicle/FW")
+//    public List<FWVehicle> getAllFWVehicleData() {
+//        return vehicleRequestService.getAllFWVehicalRequest();
+//    }
+
+    @GetMapping("/api/vehicle/{vertical}/{requestId}")
+    public FWVehicle getTWVehicalRequestDetails(@PathVariable String vertical, @PathVariable String requestId) {
+        return vehicleRequestService.getFWVehicalDetailsByRequestId(vertical, requestId);
     }
-    @GetMapping("/api/vehicle/FW/{requestId}")
-    public FWVehicle getFWVehicalRequestDetails(@PathVariable String requestId) {
-        return vehicleRequestService.getFWVehicalDetailsByRequestId(requestId);
-    }
-    @GetMapping("/api/vehicle/TW/{requestId}")
-    public Vehicle getTWVehicalRequestDetails(@PathVariable String requestId) {
-        return vehicleRequestService.getTWVehicalDetailsByRequestId(requestId);
-    }
+
+//    @GetMapping("/api/vehicle/FW/{requestId}")
+//    public FWVehicle getFWVehicalRequestDetails(@PathVariable String requestId) {
+//        return vehicleRequestService.getFWVehicalDetailsByRequestId(requestId);
+//    }
+//    @GetMapping("/api/vehicle/TW/{requestId}")
+//    public Vehicle getTWVehicalRequestDetails(@PathVariable String requestId) {
+//        return vehicleRequestService.getTWVehicalDetailsByRequestId(requestId);
+//    }
 
 }

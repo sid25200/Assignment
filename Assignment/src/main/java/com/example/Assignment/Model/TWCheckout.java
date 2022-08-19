@@ -19,6 +19,15 @@ public class TWCheckout {
         this.vehicle = vehicle;
     }
 
+    public TWCheckout(String checkoutId, String resultId, String requestId, InsurerPremium insurerPremium, Customer customer, Vehicle vehicle) {
+        this.checkoutId = checkoutId;
+        this.resultId = resultId;
+        this.requestId = requestId;
+        this.insurerPremium = insurerPremium;
+        this.customer = customer;
+        this.vehicle = vehicle;
+    }
+
     public String getCheckoutId() {
         return checkoutId;
     }

@@ -17,7 +17,10 @@ public class TWResultSupportService {
         List<TWResult> twResultList = new ArrayList<>();
         for (int i=0;i<insurerPremiumList1.size();i++) {
             InsurerPremium insurerPremium = insurerPremiumList1.get(i);
-            TWResult twResult = new TWResult(vehicle, insurerPremium);
+            TWResult twResult = new TWResult();
+            //new TWResult(vehicle, insurerPremium);
+            twResult.setVehicle(vehicle);
+            twResult.setInsurerPremium(insurerPremium);
             twResult.setInsurerName(insurerPremium.getInsurerName());
             twResult.setRequestId(requestId);
             twResultList.add(i,twResult);
@@ -26,6 +29,6 @@ public class TWResultSupportService {
     }
 
     public List<TWResult> findByOnlyRequestId(String requestId) {
-        return twResultRepository.findBy(requestId);
+        return twResultRepository.findAll();
     }
 }

@@ -11,8 +11,8 @@ public interface TWResultRepository extends MongoRepository<TWResult, String> {
     List<TWResult> findByRequestId(String requestId);
 
     TWResult findByResultId(String resultId);
-    @Query()
-    List<TWResult> findBy(String param1);
-
-    //List<TWResult> findALLByRequestId(String requestId);
+//    @Query("{ 'requestId' : ?0 }")
+//    List<TWResult> findBy(String param1);
+//
+//    List<TWResult> findALLByRequestId(String requestId);
 }

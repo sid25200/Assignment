@@ -1,5 +1,6 @@
 package com.example.Assignment.Services;
 
+import com.example.Assignment.Constant.VehicalConstants;
 import com.example.Assignment.Model.FWVehicle;
 import com.example.Assignment.Model.Vehicle;
 import com.example.Assignment.Repository.FWVehicleRequestRepository;
@@ -7,6 +8,7 @@ import com.example.Assignment.Repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -26,7 +28,7 @@ public class VehicleRequestService {
         String createRequestId = "";
         while (true) {
             createRequestId = vehicleSupportServices.createRequestId(fwVehicle.getVertical());
-            if (getTWVehicalDetailsByRequestId(createRequestId)==null) {
+            if (getFWVehicalDetailsByRequestId(fwVehicle.getVertical(), createRequestId)==null) {
                 break;
             }
         }
@@ -50,24 +52,51 @@ public class VehicleRequestService {
         }
         return "successfully New Vehicle Request " + fwVehicle.getRequestId();
     }
+    public List<Vehicle> getAllVehicalRequest(String vertical) {
+        if(vertical.equalsIgnoreCase(VehicalConstants.TW))
+            return vehicleRepository.findAll();
+        else if(vertical.equalsIgnoreCase(VehicalConstants.FW)) {
+            List<FWVehicle> fwVehicleList = fwVehicleRequestRepository.findAll();
+            List<Vehicle> vehicleList = new ArrayList<>();
+            for(int i=0;i<fwVehicleList.size();i++){
+                vehicleList.add(new Vehicle(fwVehicleList.get(i).getRequestId(),fwVehicleList.get(i).getVertical(),fwVehicleList.get(i).getModel(),fwVehicleList.get(i).getMake()));
+            }
+            return vehicleList;
+        }
+        return null;
+    }
 
     // All Four Wheeler Data
-    public List<FWVehicle> getAllFWVehicalRequest() {
-        return  fwVehicleRequestRepository.findAll();
+//
+//    public List<FWVehicle> getAllFWVehicalRequest() {
+//        return  fwVehicleRequestRepository.findAll();
+//    }
+//
+//    // All Two Wheeler Data
+//    public List<Vehicle> getAllTWVehicalRequest() {
+//        return vehicleRepository.findAll();
+//    }
+
+    public FWVehicle getFWVehicalDetailsByRequestId(String vertical, String requestId) {
+        if(vertical.equalsIgnoreCase(VehicalConstants.FW))
+            return fwVehicleRequestRepository.findByRequestId(requestId);
+        else if(vertical.equalsIgnoreCase(VehicalConstants.TW)){
+            Vehicle vehicle = vehicleRepository.findByRequestId(requestId);//findByRequestId(requestId);
+            if(vehicle == null)
+                return null;
+            return new FWVehicle(vehicle.getRequestId(),vehicle.getVertical(),vehicle.getModel(),vehicle.getMake());
+        }
+        return null;
     }
 
-    // All Two Wheeler Data
-    public List<Vehicle> getAllTWVehicalRequest() {
-        return vehicleRepository.findAll();
-    }
 
     // Specific Two Wheeler Data
-    public Vehicle getTWVehicalDetailsByRequestId(String requestId) {
-        return vehicleRepository.findByRequestId(requestId);
-    }
-    // Specific Four Wheeler Data
-    public  FWVehicle getFWVehicalDetailsByRequestId(String requestId) {
-        return  fwVehicleRequestRepository.findByRequestId(requestId);
-    }
+//    public Vehicle getTWVehicalDetailsByRequestId(String requestId) {
+//        return vehicleRepository.findByRequestId(requestId);
+//    }
+//    // Specific Four Wheeler Data
+//    public  FWVehicle getFWVehicalDetailsByRequestId(String requestId) {
+//        return  fwVehicleRequestRepository.findByRequestId(requestId);
+//    }
 
 }

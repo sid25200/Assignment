@@ -40,18 +40,20 @@ public class TWCheckoutService {
         return twCheckout;
     }
 
-    public TWCheckout getCheckoutDetailsByRequestIdAndResultId(String requestId, String resultId, Customer customer) {
-        TWResult twResult = twResultRepository.findByResultId(resultId);
-        if(twResult == null) return null;
-        if(!checkoutSupportServices.validateCustomerDetails(customer).equalsIgnoreCase(CheckoutConstant.VALID)) return null;
-
-        TWCheckout twCheckout = new TWCheckout(twResult.getInsurerPremium(), customer,vehicleRepository.findByRequestId(requestId));
-        twCheckout.setRequestId(requestId);
-        twCheckout.setResultId(resultId);
-        twCheckoutRepository.insert(twCheckout);
-        return twCheckout;
-    }
-
+//    public TWCheckout getCheckoutDetailsByRequestIdAndResultId(String requestId, String resultId, Customer customer) {
+//        TWResult twResult = twResultRepository.findByResultId(resultId);
+//        if(twResult == null) return null;
+//        if(!checkoutSupportServices.validateCustomerDetails(customer).equalsIgnoreCase(CheckoutConstant.VALID)) return null;
+//
+//        TWCheckout twCheckout = new TWCheckout(twResult.getInsurerPremium(), customer,vehicleRepository.findByRequestId(requestId));
+//        twCheckout.setRequestId(requestId);
+//        twCheckout.setResultId(resultId);
+//        twCheckoutRepository.insert(twCheckout);
+//        return twCheckout;
+//    }
+//    public TWCheckout getCheckoutDetailsByRequestIdAndResultId(String vertical, String requestId, String resultId, Customer customer) {
+//
+//    }
     public TWCheckout getCheckoutDetailsByRequestId(String requestId) {
         return twCheckoutRepository.findByRequestId(requestId);
     }

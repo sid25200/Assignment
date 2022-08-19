@@ -40,20 +40,20 @@ public class FWCheckoutService {
         fwCheckoutRepository.insert(fwCheckout);
         return fwCheckout;
     }
-    public FWCheckout getCheckoutDetailsByRequestIdAndResultId(String requestId, String resultId, Customer customer) {
-        FWResult fwResult = fwResultsRepository.findByResultId(resultId);
-        if(fwResult == null ) return null;
-        if(!checkoutSupportServices.validateCustomerDetails(customer).equalsIgnoreCase(CheckoutConstant.VALID)) return null;
-
-        FWCheckout fwCheckout =new FWCheckout(fwResult.getInsurerPremium(),customer, fwVehicleRequestRepository.findByRequestId(requestId));// null;
-        fwCheckout.setRequestId(requestId);
-        fwCheckout.setResultId(resultId);
-//        fwCheckout.setCustomer(customer);
-//        fwCheckout.setFwVehicle(fwVehicleRequestRepository.findByRequestId(requestId));
-//        fwCheckout.setInsurerPremium(fwResult.getInsurerPremium());
-        fwCheckoutRepository.insert(fwCheckout);
-        return fwCheckout;
-    }
+//    public FWCheckout getCheckoutDetailsByRequestIdAndResultId(String requestId, String resultId, Customer customer) {
+//        FWResult fwResult = fwResultsRepository.findByResultId(resultId);
+//        if(fwResult == null ) return null;
+//        if(!checkoutSupportServices.validateCustomerDetails(customer).equalsIgnoreCase(CheckoutConstant.VALID)) return null;
+//
+//        FWCheckout fwCheckout =new FWCheckout(fwResult.getInsurerPremium(),customer, fwVehicleRequestRepository.findByRequestId(requestId));// null;
+//        fwCheckout.setRequestId(requestId);
+//        fwCheckout.setResultId(resultId);
+////        fwCheckout.setCustomer(customer);
+////        fwCheckout.setFwVehicle(fwVehicleRequestRepository.findByRequestId(requestId));
+////        fwCheckout.setInsurerPremium(fwResult.getInsurerPremium());
+//        fwCheckoutRepository.insert(fwCheckout);
+//        return fwCheckout;
+//    }
 
     public FWCheckout getCheckoutDetailsByRequestId(String requestId) {
         return fwCheckoutRepository.findByRequestId(requestId);

@@ -18,14 +18,14 @@ public class FWCheckoutController {
     public FWCheckout storeCheckoutDetails(@PathVariable String requestId, @PathVariable String insurer, @RequestBody Customer customer) {
         return fwCheckoutService.getCheckoutDetailsByRequestIdAndInsurer(requestId, insurer,customer);
     }
-    @PostMapping("/api/vehicle/FW/checkout/{requestId}/insurer/{resultId}")
-    public FWCheckout storeCheckoutDetailsByResultId(@PathVariable String requestId, @PathVariable String resultId, @RequestBody Customer customer) {
-        return fwCheckoutService.getCheckoutDetailsByRequestIdAndResultId(requestId, resultId,customer);
-    }
-    @GetMapping("/api/vehicle/FW/checkout/{requestId}")
-    public FWCheckout getAllCheckoutDetails(@PathVariable String requestId) {
-        return fwCheckoutService.getCheckoutDetailsByRequestId(requestId);
-    }
+//    @PostMapping("/api/vehicle/FW/checkout/{requestId}/insurer/{resultId}")
+//    public FWCheckout storeCheckoutDetailsByResultId(@PathVariable String requestId, @PathVariable String resultId, @RequestBody Customer customer) {
+//        return fwCheckoutService.getCheckoutDetailsByRequestIdAndResultId(requestId, resultId,customer);
+//    }
+//    @GetMapping("/api/vehicle/FW/checkout/{requestId}")
+//    public FWCheckout getAllCheckoutDetails(@PathVariable String requestId) {
+//        return fwCheckoutService.getCheckoutDetailsByRequestId(requestId);
+//    }
     @PutMapping("/api/vehicle/FW/checkout/{requestId}/{checkoutId}")
     public String updateFWCheckoutDetails(@PathVariable String requestId, @PathVariable String checkoutId,@RequestBody Customer customer) {
         return fwCheckoutService.updateCheckoutDetails(requestId,checkoutId,customer);

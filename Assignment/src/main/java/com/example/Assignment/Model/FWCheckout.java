@@ -1,8 +1,14 @@
 package com.example.Assignment.Model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+
+@NoArgsConstructor
+@Data
 @Document(collection = "FWCheckout")
 public class FWCheckout {
     @Id
@@ -18,6 +24,15 @@ public class FWCheckout {
     private FWVehicle fwVehicle;
     public FWCheckout(InsurerPremium insurerPremium, Customer customer, FWVehicle fwVehicle) {
         this.insurerPremium = insurerPremium;
+        this.customer = customer;
+        this.fwVehicle = fwVehicle;
+    }
+
+    public FWCheckout(String checkoutId, String resultId, InsurerPremium insurerPremium, String requestId, Customer customer, FWVehicle fwVehicle) {
+        this.checkoutId = checkoutId;
+        this.resultId = resultId;
+        this.insurerPremium = insurerPremium;
+        this.requestId = requestId;
         this.customer = customer;
         this.fwVehicle = fwVehicle;
     }
